@@ -1,4 +1,683 @@
-<!-- Slide 8: Fees & Logistics -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Size Bootcamp - Proposal</title>
+    <style>
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .slide {
+                page-break-after: always;
+                page-break-inside: avoid;
+                margin: 0;
+                padding: 40px;
+                min-height: 100vh;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: hsl(0 0% 98%);
+            padding: 20px;
+        }
+
+        .slide {
+            background: hsl(0 0% 100%);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid hsl(0 0% 90%);
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em !important;
+            }
+            .subtitle {
+                font-size: 1em !important;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .two-col-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: hsl(222.2 47.4% 11.2%);
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: hsl(215.4 16.3% 46.9%);
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: hsl(221 83% 96%);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid hsl(221 83% 53%);
+            margin-bottom: 25px;
+        }
+
+        .feature-grid {
+            display: grid;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            background: hsl(0 0% 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid hsl(0 0% 90%);
+            border-left: 6px solid hsl(142 71% 45%);
+        }
+
+        .feature-item h3 {
+            color: hsl(222.2 47.4% 11.2%);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: hsl(215.4 16.3% 46.9%);
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .mentor-card {
+            background: hsl(0 0% 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid hsl(221 83% 53%);
+            text-align: center;
+        }
+
+        .mentor-card h4 {
+            color: hsl(222.2 47.4% 11.2%);
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .mentor-card p {
+            color: hsl(215.4 16.3% 46.9%);
+            font-size: 0.95em;
+        }
+
+        .roadmap-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .roadmap-number {
+            width: 45px;
+            height: 45px;
+            background: hsl(221 83% 53%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+            background: hsl(221 83% 96%);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid hsl(221 83% 53%);
+        }
+
+        .roadmap-content h4 {
+            color: hsl(222.2 47.4% 11.2%);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: hsl(0 0% 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid hsl(142 71% 45%);
+            text-align: center;
+        }
+
+        .stat-card .number {
+            color: hsl(142 71% 45%);
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: hsl(222.2 47.4% 11.2%);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .brand-name {
+            background: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .not-box {
+            background: hsl(0 84% 97%);
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 4px solid hsl(0 84% 60%);
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: hsl(221 83% 96%);
+            color: hsl(221 83% 53%);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: 600;
+            border: 1px solid hsl(221 83% 53%);
+            font-size: 0.9em;
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            background: hsl(222.2 47.4% 11.2%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: hsl(222.2 47.4% 20%);
+        }
+
+        @media (max-width: 768px) {
+            .print-button {
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--<button class="print-button no-print" onclick="window.print()">📄 Download as PDF</button>-->
+
+    <!-- Slide 1: Introduction -->
+    <div class="slide">
+        <h1><span class="brand-name">Byte Size</span></h1>
+        <p class="subtitle">Learning and experiencing tech in practical, actionable chunks<br>— not theory-heavy cramming</p>
+        
+        <div style="max-width: 850px; margin: 40px auto;">
+            <div class="highlight-box">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.5em; margin-bottom: 15px; font-weight: 600; text-align: center;">A Campus to Career Pipeline</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.1em; line-height: 1.8; text-align: center;">
+                    An industry-aligned bootcamp designed to transform students into job-ready software developers through experiential learning and real-world project experience.
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7;">
+                    Proposed by <strong style="color: hsl(222.2 47.4% 11.2%);">Parthasarathi Mahana</strong><br>
+                    Alumni, Nalanda Institute of Technology (2018)<br>
+                    Senior Software Developer | 5+ Years Industry Experience
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 2: What Is It -->
+    <div class="slide">
+        <h1>What Is Byte Size?</h1>
+        <p class="subtitle">Clear expectations and honest promises</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div class="highlight-box">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.4em; margin-bottom: 15px; font-weight: 600;">What It Is</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.8;">
+                    An <strong style="color: hsl(222.2 47.4% 11.2%);">8-10 months long</strong> focused and planned learning and working experience for people who want to get into the software industry <strong style="color: hsl(222.2 47.4% 11.2%);">without being afraid of AI taking away their job</strong> and currently don't have knowledge or experience.
+                </p>
+            </div>
+
+            <div class="not-box">
+                <h3 style="color: hsl(0 84% 40%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">❌ What It's NOT</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7;">
+                    <strong>This is NOT a job guarantee bootcamp.</strong><br><br>
+                    We focus on making students <strong>job-ready</strong>, not making empty promises. Our goal is to equip them with skills, experience, and confidence that will serve them throughout their careers.
+                </p>
+            </div>
+
+            <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(221 83% 53%); margin-top: 25px;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 15px; font-weight: 600; text-align: center;">Who Is This For?</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7; text-align: center;">
+                    <strong style="color: hsl(222.2 47.4% 11.2%);">Undergrads</strong> who are serious about getting into software development and ready to commit to intensive learning and hard work.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Goals -->
+    <div class="slide">
+        <h1>Goals of the Bootcamp</h1>
+        <p class="subtitle">Building bridges between academia and industry</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🎯 Experiential Learning</h3>
+                    <p>Move beyond theoretical knowledge to hands-on, practical experience with real-world software development processes and industry-standard tools.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🌉 Campus to Career Pipeline</h3>
+                    <p><strong>For Students:</strong> Seamless transition from college to industry with proven skills and portfolio.<br><br>
+                    <strong>For Companies:</strong> Access to well-trained, job-ready candidates who can contribute from day one.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>🚀 Skip the Trainee Phase</h3>
+                    <p>Help students enter the workforce as Junior or Associate Engineers, bypassing the typical 6-12 month trainee period that most graduates face.</p>
+                </div>
+            </div>
+
+            <div style="background: hsl(142 76% 96%); padding: 25px; border-radius: 8px; border-left: 4px solid hsl(142 71% 45%); margin-top: 25px; text-align: center;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.4em; margin-bottom: 12px; font-weight: 600;">Benefits for NIT Bhubaneswar</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7;">
+                    Enhanced placement rates • Stronger industry connections • Improved department reputation • Higher starting salaries for graduates
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Format -->
+    <div class="slide">
+        <h1>Bootcamp Format</h1>
+        <p class="subtitle">Flexible learning designed around college schedules</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div class="highlight-box" style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.8em; margin-bottom: 15px; font-weight: 700;">Hybrid Model: Online + Offline</h2>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.8;">
+                    Designed to complement academic schedules without interference
+                </p>
+            </div>
+
+            <div class="two-col-grid" style="margin-bottom: 30px;">
+                <div style="background: hsl(221 83% 96%); padding: 30px; border-radius: 8px; border: 2px solid hsl(221 83% 53%);">
+                    <div style="font-size: 2.5em; text-align: center; margin-bottom: 15px;">💻</div>
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.4em; margin-bottom: 15px; font-weight: 600; text-align: center;">Online Sessions</h3>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7; text-align: center;">
+                        <strong>5 days per week</strong><br>
+                        1.5 hours daily<br>
+                        Morning or Evening<br>
+                        (Outside college hours)
+                    </p>
+                </div>
+
+                <div style="background: hsl(142 76% 96%); padding: 30px; border-radius: 8px; border: 2px solid hsl(142 71% 45%);">
+                    <div style="font-size: 2.5em; text-align: center; margin-bottom: 15px;">🏫</div>
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.4em; margin-bottom: 15px; font-weight: 600; text-align: center;">Offline Sessions</h3>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7; text-align: center;">
+                        <strong>2nd Saturday</strong><br>
+                        In-depth project work<br><br>
+                        <strong>Sunday Meetup</strong><br>
+                        Progress review & mentorship
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: hsl(47 100% 96%); padding: 25px; border-radius: 8px; border-left: 4px solid hsl(45 93% 47%);">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">📍 Venue Requirement</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7;">
+                    We would need access to a classroom or lab space on campus for weekend sessions and a POC. This keeps students in a focused learning environment and maintains the college-bootcamp connection.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Team -->
+    <div class="slide">
+        <h1>The Mentorship Team</h1>
+        <p class="subtitle">Experienced professionals committed to student success</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div style="display: grid; gap: 20px;">
+                <div class="two-col-grid">
+                    <div class="mentor-card">
+                        <div style="width: 70px; height: 70px; background: hsl(221 83% 53%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8em; font-weight: bold;">PM</div>
+                        <h4>Parthasarathi Mahana</h4>
+                        <p>Senior Software Developer & Mentor</p>
+                        <p style="margin-top: 8px; font-size: 0.9em;">4+ years experience | Data Privacy</p>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div style="width: 70px; height: 70px; background: hsl(45 93% 47%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8em; font-weight: bold;">SR</div>
+                        <h4>Suhas Ramesh</h4>
+                        <p>Client Engagement Lead</p>
+                        <p style="margin-top: 8px; font-size: 0.9em;">Program management | Career Mentorship</p>
+                    </div>
+                </div>
+                
+                <div class="two-col-grid">
+                    <div class="mentor-card">
+                        <div style="width: 65px; height: 65px; background: hsl(262 83% 58%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6em; font-weight: bold;">JC</div>
+                        <h4>Janhavi Chauhan</h4>
+                        <p>Software Developer | Junior Mentor</p>
+                        <p style="margin-top: 8px; font-size: 0.85em;">Full-stack, UI/UX, Automation Expert</p>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div style="width: 65px; height: 65px; background: hsl(142 71% 45%); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6em; font-weight: bold;">SY</div>
+                        <h4>Siddharth Yadav</h4>
+                        <p>Software Developer | Junior Mentor</p>
+                        <p style="margin-top: 8px; font-size: 0.85em;">Modern Web Technologies</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: hsl(142 76% 96%); padding: 25px; border-radius: 8px; border-left: 4px solid hsl(142 71% 45%); margin-top: 30px;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600; text-align: center;">👥 Small Batch, High Impact</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.7; text-align: center;">
+                    With only <strong style="color: hsl(222.2 47.4% 11.2%);">20 students per batch</strong>, each mentor can provide personalized attention, track individual progress, and ensure every student reaches their full potential.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Why Join -->
+    <div class="slide">
+        <h1>Why Should Students Join?</h1>
+        <p class="subtitle">Real-world experience that makes a difference</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div class="highlight-box" style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.6em; margin-bottom: 12px; font-weight: 600;">🎯 Experience Real Software Development</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.8;">
+                    Students will experience the software development process as it happens in real-world companies, enabling them to skip the trainee phase entirely.
+                </p>
+            </div>
+
+            <div style="background: hsl(0 0% 100%); padding: 30px; border-radius: 8px; border: 2px solid hsl(221 83% 53%);">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.4em; margin-bottom: 20px; font-weight: 600; text-align: center;">What They'll Master</h3>
+                
+                <div style="display: grid; gap: 15px;">
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <div style="color: hsl(142 71% 45%); font-size: 1.6em; flex-shrink: 0;">✓</div>
+                        <div>
+                            <h4 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.2em; margin-bottom: 6px; font-weight: 600;">SDLC (Software Development Life Cycle)</h4>
+                            <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.6;">
+                                Understand how software projects move from concept to production
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <div style="color: hsl(142 71% 45%); font-size: 1.6em; flex-shrink: 0;">✓</div>
+                        <div>
+                            <h4 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.2em; margin-bottom: 6px; font-weight: 600;">STLC (Software Testing Life Cycle)</h4>
+                            <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.6;">
+                                Understand how software projects tested for production readiness
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <div style="color: hsl(142 71% 45%); font-size: 1.6em; flex-shrink: 0;">✓</div>
+                        <div>
+                            <h4 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.2em; margin-bottom: 6px; font-weight: 600;">Agile Scrum Methodology</h4>
+                            <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.6;">
+                                Work in sprints, daily standups, retrospectives—just like professional teams
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 12px;">
+                        <div style="color: hsl(142 71% 45%); font-size: 1.6em; flex-shrink: 0;">✓</div>
+                        <div>
+                            <h4 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.2em; margin-bottom: 6px; font-weight: 600;">Dev to Prod Process</h4>
+                            <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.6;">
+                                Learn deployment pipelines, CI/CD, testing, and production maintenance
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Roadmap -->
+    <div class="slide">
+        <h1>Bootcamp Roadmap</h1>
+        <p class="subtitle">A structured journey from enrollment to employment</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div>
+                <div class="roadmap-step">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h4>Enrollment After Assessment</h4>
+                        <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; line-height: 1.6; margin-top: 5px;">3-day assignment + personal interview to select committed students</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h4>Experiential Learning with Projects in Production</h4>
+                        <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; line-height: 1.6; margin-top: 5px;">8-10 months of intensive training with real-world project experience</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h4>Final Assessment</h4>
+                        <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; line-height: 1.6; margin-top: 5px;">Take-home project + live coding + mock interview to validate skills</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-number">4</div>
+                    <div class="roadmap-content">
+                        <h4>Hackathon and Networking Event</h4>
+                        <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; line-height: 1.6; margin-top: 5px;">Showcase your work and connect with potential recruiters from industry</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-number">5</div>
+                    <div class="roadmap-content">
+                        <h4>Opportunity as Junior Mentor + Contribute to In-house Products</h4>
+                        <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; line-height: 1.6; margin-top: 5px;">Top performers can mentor next batch and gain additional experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Syllabus -->
+    <div class="slide">
+        <h1>Syllabus Overview</h1>
+        <p class="subtitle">Comprehensive, industry-aligned curriculum</p>
+        
+        <div style="max-width: 950px; margin: 30px auto;">
+            <div style="background: hsl(221 83% 96%); padding: 30px; border-radius: 8px; border-left: 4px solid hsl(221 83% 53%); margin-bottom: 30px; text-align: center;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.5em; margin-bottom: 15px; font-weight: 600;">Core Technology Stack</h3>
+                <div style="margin: 15px 0;">
+                    <span class="tech-badge">MongoDB</span>
+                    <span class="tech-badge">Express.js</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">Node.js</span>
+                </div>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; margin-top: 12px;">The MERN Stack - Industry's most in-demand full-stack framework</p>
+            </div>
+
+            <div style="display: grid; gap: 20px;">
+                <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(142 71% 45%); border-left: 6px solid hsl(142 71% 45%);">
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">🛠️ DevOps Fundamentals</h3>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.7; margin-bottom: 10px;">
+                        Modern software development requires understanding of deployment and operations:
+                    </p>
+                    <div style="margin-top: 12px;">
+                        <span class="tech-badge" style="background: hsl(142 76% 96%); color: hsl(142 71% 35%); border-color: hsl(142 71% 45%);">CI/CD Pipelines</span>
+                        <span class="tech-badge" style="background: hsl(142 76% 96%); color: hsl(142 71% 35%); border-color: hsl(142 71% 45%);">AWS/Cloud Services</span>
+                        <span class="tech-badge" style="background: hsl(142 76% 96%); color: hsl(142 71% 35%); border-color: hsl(142 71% 45%);">Docker Basics</span>
+                        <span class="tech-badge" style="background: hsl(142 76% 96%); color: hsl(142 71% 35%); border-color: hsl(142 71% 45%);">Git/GitHub</span>
+                    </div>
+                </div>
+
+                <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(262 83% 58%); border-left: 6px solid hsl(262 83% 58%);">
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">🤖 AI for Developers</h3>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.7; margin-bottom: 10px;">
+                        Learn to leverage AI tools to enhance productivity and build AI-powered features:
+                    </p>
+                    <div style="margin-top: 12px;">
+                        <span class="tech-badge" style="background: hsl(262 90% 96%); color: hsl(262 83% 48%); border-color: hsl(262 83% 58%);">ChatGPT/AI Assistants</span>
+                        <span class="tech-badge" style="background: hsl(262 90% 96%); color: hsl(262 83% 48%); border-color: hsl(262 83% 58%);">Prompt Engineering</span>
+                        <span class="tech-badge" style="background: hsl(262 90% 96%); color: hsl(262 83% 48%); border-color: hsl(262 83% 58%);">AI API Integration</span>
+                        <span class="tech-badge" style="background: hsl(262 90% 96%); color: hsl(262 83% 48%); border-color: hsl(262 83% 58%);">Gen AI Basics</span>
+                    </div>
+                </div>
+
+                <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(199 89% 48%); border-left: 6px solid hsl(199 89% 48%);">
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">📋 Agile Scrum Methodology</h3>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.7; margin-bottom: 10px;">
+                        Work like professional teams with industry-standard project management:
+                    </p>
+                    <div style="margin-top: 12px;">
+                        <span class="tech-badge" style="background: hsl(199 89% 96%); color: hsl(199 89% 38%); border-color: hsl(199 89% 48%);">Sprint Planning</span>
+                        <span class="tech-badge" style="background: hsl(199 89% 96%); color: hsl(199 89% 38%); border-color: hsl(199 89% 48%);">Daily Standups</span>
+                        <span class="tech-badge" style="background: hsl(199 89% 96%); color: hsl(199 89% 38%); border-color: hsl(199 89% 48%);">Retrospectives</span>
+                        <span class="tech-badge" style="background: hsl(199 89% 96%); color: hsl(199 89% 38%); border-color: hsl(199 89% 48%);">Jira/Project Tools</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: hsl(47 100% 96%); padding: 25px; border-radius: 8px; border-left: 4px solid hsl(45 93% 47%); margin-top: 25px; text-align: center;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 10px; font-weight: 600;">🎯 Plus: Soft Skills & Career Readiness</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.7;">
+                    Resume building • Portfolio development • Interview preparation • LinkedIn optimization • Personal branding • Communication skills
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Next Steps -->
+    <div class="slide">
+        <h1>Next Steps</h1>
+        <p class="subtitle">Let's bring this opportunity to NIT students</p>
+        
+        <div style="max-width: 900px; margin: 30px auto;">
+            <div class="highlight-box" style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.6em; margin-bottom: 12px; font-weight: 600;">Partnership Proposal</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.8;">
+                    We're seeking the college's support to launch Byte Size as an official campus program, providing NIT Bhubaneswar students with a competitive edge in the job market.
+                </p>
+            </div>
+
+            <div style="display: grid; gap: 20px; margin-bottom: 30px;">
+                <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(221 83% 53%); border-left: 6px solid hsl(221 83% 53%);">
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">📍 What We Need from the College</h3>
+                    <ul style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.9; padding-left: 25px;">
+                        <li>Access to classroom/lab space on weekends (2nd Saturday + Sunday)</li>
+                        <li>Permission to conduct the program for undergrad students</li>
+                        <li>Support in promoting the bootcamp to students</li>
+                        <li>Potential collaboration on the state-level hackathon</li>
+                    </ul>
+                </div>
+
+                <div style="background: hsl(0 0% 100%); padding: 25px; border-radius: 8px; border: 2px solid hsl(142 71% 45%); border-left: 6px solid hsl(142 71% 45%);">
+                    <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.3em; margin-bottom: 12px; font-weight: 600;">🎁 What the College Gains</h3>
+                    <ul style="color: hsl(215.4 16.3% 46.9%); font-size: 1em; line-height: 1.9; padding-left: 25px;">
+                        <li>Improved placement statistics and higher starting salaries</li>
+                        <li>Enhanced department reputation with industry-ready graduates</li>
+                        <li>Potential revenue sharing from the program</li>
+                        <li>Stronger industry connections through the hackathon</li>
+                        <li>Alumni giving back to their alma mater</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: hsl(142 76% 96%); padding: 35px; border-radius: 8px; border-left: 4px solid hsl(142 71% 45%); text-align: center;">
+                <h3 style="color: hsl(222.2 47.4% 11.2%); font-size: 1.5em; margin-bottom: 15px; font-weight: 600;">🤝 Let's Build the Future Together</h3>
+                <p style="color: hsl(215.4 16.3% 46.9%); font-size: 1.05em; line-height: 1.8; margin-bottom: 20px;">
+                    I'm excited to discuss this proposal further and explore how we can make Byte Size a flagship program at NIT Bhubaneswar. Together, we can create a pipeline of exceptional software developers who will make the college proud.
+                </p>
+                <div style="margin-top: 25px;">
+                    <p style="color: hsl(222.2 47.4% 11.2%); font-size: 1.05em; font-weight: 600;">Contact Information</p>
+                    <p style="color: hsl(215.4 16.3% 46.9%); font-size: 0.95em; margin-top: 10px;">
+                        Parthasarathi Mahana<br>
+                        parthasarathimahana@gmail.com • +918249868996
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 10: Fees & Logistics -->
     <div class="slide">
         <h1>Program Logistics</h1>
         <p class="subtitle">Investment and batch structure</p>
@@ -35,3 +714,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Auto-print functionality can be enabled by uncommenting below
+        // window.onload = function() {
+        //     setTimeout(() => window.print(), 500);
+        // }
+    </script>
+</body>
+</html>
